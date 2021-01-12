@@ -11,6 +11,25 @@
                         <li class="sidebar-item"><a href="{{url('/pelanggan')}}" class="sidebar-link"><i class="mdi mdi-account"></i><span class="hide-menu">Lihat Pelanggan</span></a></li>
                     </ul>
                 </li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false"><i class="mdi mdi-cart"></i><span class="hide-menu">Pengadaan Produk</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-rocket"></i><span class="hide-menu">Data Pengiriman </span></a>
+                    <ul aria-expanded="false" class="collapse  first-level">
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false"><i class="mdi mdi-rocket"></i><span class="hide-menu">Penjadwalan Pengiriman</span></a></li>
+                        <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="mdi mdi-rocket"></i><span class="hide-menu">Lihat Pengiriman</span></a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-cash"></i><span class="hide-menu">Data Penjualan </span></a>
+                    <ul aria-expanded="false" class="collapse  first-level">
+                        <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="mdi mdi-cash-multiple"></i><span class="hide-menu">Tambah Penjualan</span></a></li>
+                        <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="mdi mdi-cash-usd"></i><span class="hide-menu">Lihat Penjualan</span></a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-car"></i><span class="hide-menu">Data Kendaraan </span></a>
+                    <ul aria-expanded="false" class="collapse  first-level">
+                        <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="mdi mdi-car-connected"></i><span class="hide-menu">Tambah Kendaraan</span></a></li>
+                        <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="mdi mdi-car"></i><span class="hide-menu">Lihat Kendaraan</span></a></li>
+                    </ul>
+                </li>
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-account-location"></i><span class="hide-menu">Pengolahan Akun </span></a>
                     <ul aria-expanded="false" class="collapse  first-level">
                         <li class="sidebar-item"><a href="{{url('/user/tambah')}}" class="sidebar-link"><i class="mdi mdi-account-plus"></i><span class="hide-menu">Tambah User</span></a></li>
