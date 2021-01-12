@@ -27,3 +27,10 @@ Route::post('/pelanggan/tambah',[Pelanggan::class,'inputaction'])->name('pelangg
 Route::get('/pelanggan/edit/{id}',[Pelanggan::class,'editform'])->name('pelanganedit')->middleware('auth');
 Route::post('/pelanggan/edit',[Pelanggan::class,'editaction'])->name('pelanganeditaction')->middleware('auth');
 Route::delete('/pelanggan/destroy/{id}',[Pelanggan::class,'hapusaction'])->name('pelanganhapusaction')->middleware('auth');
+//user
+Route::get('/user',[LoginController::class,'index'])->name('indexuser')->middleware('auth');
+Route::get('/user/tambah',[LoginController::class,'usertambahform'])->name('tambahuser')->middleware('auth');
+Route::post('/user/tambah',[LoginController::class,'usertambahaction'])->name('tambahuseraction')->middleware('auth');
+Route::get('/user/edit/{id}',[LoginController::class,'usereditform'])->name('edituser')->middleware('auth');
+Route::post('/user/edit',[LoginController::class,'usereditaction'])->name('edituseraction')->middleware('auth');
+Route::delete('/user/destroy/{id}',[LoginController::class,'hapusaction'])->name('userhapusaction')->middleware('auth');

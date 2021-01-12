@@ -18,6 +18,14 @@ class CreateRolesTable extends Migration
             $table->string('nama');
             $table->timestamps();
         });
+        DB::table('roles')->insert(
+            [
+                ['id'=>1,'nama'=>'Administrator'],
+                ['id'=>2,'nama'=>'Sales Operational Manager'],
+                ['id'=>3,'nama'=>'Staff Warehouse'],
+                ['id'=>4,'nama'=>'General Manager'],
+            ]
+        );
     }
 
     /**
