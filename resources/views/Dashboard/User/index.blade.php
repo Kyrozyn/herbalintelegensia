@@ -30,7 +30,7 @@
                         <td>{{$no+1}}</td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->username}}</td>
-                        <td>{{$user->roles()->first()->nama}}</td>
+                        <td>{{$user->roles->first()->nama}}</td>
                         <td class="align-middle text-right">
                             <div class="d-flex justify-content-end">
                                 <div id="edit" class="ml-2 edit-action">
