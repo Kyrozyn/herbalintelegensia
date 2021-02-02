@@ -26,7 +26,7 @@
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-box-shadow"></i><span class="hide-menu">Data Produk </span></a>
                     <ul aria-expanded="false" class="collapse  first-level">
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('produk.create')}}" aria-expanded="false"><i class="mdi mdi-plus-box"></i><span class="hide-menu">Tambah Produk</span></a></li>
-                        <li class="sidebar-item"><a href="{{route('produk.index')}}  " class="sidebar-link"><i class="mdi mdi-box-shadow"></i><span class="hide-menu">Lihat Semua Produk</span></a></li>
+                        <li class="sidebar-item"><a href="{{route('produk.index')}}" class="sidebar-link"><i class="mdi mdi-box-shadow"></i><span class="hide-menu">Lihat Semua Produk</span></a></li>
                     </ul>
                 </li>
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-car"></i><span class="hide-menu">Data Kendaraan </span></a>

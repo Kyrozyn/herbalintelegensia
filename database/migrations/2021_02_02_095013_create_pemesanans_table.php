@@ -17,7 +17,7 @@ class CreatePemesanansTable extends Migration
             $table->id();
             $table->unsignedBigInteger('produk_id');
             $table->unsignedBigInteger('pelanggan_id');
-            $table->dateTime('tanggal_pemesanan')->useCurrent();
+            $table->dateTime('tanggal_pemesanan');
             $table->string('keterangan');
             $table->integer('jumlah');
             $table->enum('status',['Dikirim','Belum Dikirim']);
