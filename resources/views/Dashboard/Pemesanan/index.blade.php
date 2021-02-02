@@ -26,6 +26,7 @@
                     <td>Jumlah</td>
                     <td>Keterangan</td>
                     <td>Status</td>
+                    <td>Aksi</td>
                 </thead>
                 @foreach($pemesanans as $no => $pemesanan)
                     <tr>
@@ -36,13 +37,9 @@
                         <td>{{$pemesanan->jumlah}}</td>
                         <td>{{$pemesanan->keterangan}}</td>
                         <td>{{$pemesanan->status}}</td>
+
                         <td class="align-middle text-right">
                             <div class="d-flex justify-content-end">
-                                <div id="edit" class="ml-2 edit-action">
-                                    <a class="btn btn-link p-0 text-primary" href="{{route('pemesanan.edit',$pemesanan->id)}}" title="Edit">
-                                        <i class="fas fa-edit fa-fw"></i>
-                                    </a>
-                                </div>
                                 <form id="destroy" class="ml-2 destroy-action" role="form" method="post" action="{{route('pemesanan.destroy',$pemesanan->id)}}">
                                     {{method_field('DELETE')}}
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">        <input type="hidden" name="_method" value="DELETE">        <button class="btn btn-link p-0 text-danger" type="submit" title="Destroy" onclick="return confirm('Apa anda yakin ingin menghapus? ')">

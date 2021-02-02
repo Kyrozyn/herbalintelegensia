@@ -15333,6 +15333,228 @@
      
 }
 
+    namespace Galahad\Aire\Support\Facades { 
+            /**
+     * 
+     *
+     * @method static \Galahad\Aire\Elements\Label label(string $label)
+     * @method static \Galahad\Aire\Elements\Button button(string $label = NULL)
+     * @method static \Galahad\Aire\Elements\Button submit(string $label = 'Submit')
+     * @method static \Galahad\Aire\Elements\Input input($name = NULL, $label = NULL)
+     * @method static \Galahad\Aire\Elements\Select select(array|\Illuminate\Support\Collection|\Illuminate\Contracts\Support\Arrayable|\Illuminate\Contracts\Support\Jsonable|\JsonSerializable|\Traversable $options, $name = NULL, $label = NULL)
+     * @method static \Galahad\Aire\Elements\Select timezoneSelect($name = null, $label = null)
+     * @method static \Galahad\Aire\Elements\Textarea textArea($name = NULL, $label = NULL)
+     * @method static \Galahad\Aire\Elements\Summary summary()
+     * @method static \Galahad\Aire\Elements\Checkbox checkbox($name = null, $label = null)
+     * @method static \Galahad\Aire\Elements\CheckboxGroup checkboxGroup(array $options, $name, $label = NULL)
+     * @method static \Galahad\Aire\Elements\RadioGroup radioGroup(array $options, $name, $label = NULL)
+     * @method static \Galahad\Aire\Elements\Input hidden($name = NULL, $value = NULL)
+     * @method static \Galahad\Aire\Elements\Input color($name = NULL, $label = NULL)
+     * @method static \Galahad\Aire\Elements\Input date($name = NULL, $label = NULL)
+     * @method static \Galahad\Aire\Elements\Input dateTime($name = NULL, $label = NULL)
+     * @method static \Galahad\Aire\Elements\Input dateTimeLocal($name = NULL, $label = NULL)
+     * @method static \Galahad\Aire\Elements\Input email($name = NULL, $label = NULL)
+     * @method static \Galahad\Aire\Elements\Input file($name = NULL, $label = NULL)
+     * @method static \Galahad\Aire\Elements\Input image($name = NULL, $label = NULL)
+     * @method static \Galahad\Aire\Elements\Input month($name = NULL, $label = NULL)
+     * @method static \Galahad\Aire\Elements\Input number($name = NULL, $label = NULL)
+     * @method static \Galahad\Aire\Elements\Input password($name = NULL, $label = NULL)
+     * @method static \Galahad\Aire\Elements\Input range($name = NULL, $label = NULL, $min = 0, $max = 100)
+     * @method static \Galahad\Aire\Elements\Input search($name = NULL, $label = NULL)
+     * @method static \Galahad\Aire\Elements\Input tel($name = NULL, $label = NULL)
+     * @method static \Galahad\Aire\Elements\Input time($name = NULL, $label = NULL)
+     * @method static \Galahad\Aire\Elements\Input url($name = NULL, $label = NULL)
+     * @method static \Galahad\Aire\Elements\Input week($name = NULL, $label = NULL)
+     */ 
+        class Aire {
+                    /**
+         * Get the default Aire theme config.
+         * 
+         * This is mostly for theme authors who wish to merge the defaults
+         * into their theme config instead of provided all new class names.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getDefaultThemeConfig()
+        {
+                        return \Galahad\Aire\Aire::getDefaultThemeConfig();
+        }
+                    /**
+         * Set the method by which IDs are generated
+         *
+         * @param \Closure $id_generator
+         * @return \Galahad\Aire\Aire 
+         * @static 
+         */ 
+        public static function setIdGenerator($id_generator)
+        {
+                        /** @var \Galahad\Aire\Aire $instance */
+                        return $instance->setIdGenerator($id_generator);
+        }
+                    /**
+         * Generate an ID value for an element
+         *
+         * @param \Galahad\Aire\Elements\Element $element
+         * @param \Galahad\Aire\Elements\Form|null $form
+         * @return string 
+         * @static 
+         */ 
+        public static function generateAutoId($element, $form = null)
+        {
+                        /** @var \Galahad\Aire\Aire $instance */
+                        return $instance->generateAutoId($element, $form);
+        }
+                    /**
+         * Set the View Factory that Aire will use to resolve views
+         *
+         * @param \Galahad\Aire\Factory $view_factory
+         * @return \Aire 
+         * @static 
+         */ 
+        public static function setViewFactory($view_factory)
+        {
+                        /** @var \Galahad\Aire\Aire $instance */
+                        return $instance->setViewFactory($view_factory);
+        }
+                    /**
+         * Set where Aire looks for view files + any config overrides
+         * 
+         * This is mostly useful for third-party themes. By utilizing package
+         * auto-discovery, a theme can call this from its service provider's
+         * boot() method to automatically set the Aire theme.
+         * 
+         * If you want to override the default Aire views, just publish
+         * the views to your vendor directory with `artisan publish`
+         *
+         * @param string|null $namespace
+         * @param string|null $prefix
+         * @param array|null $config
+         * @return \Galahad\Aire\Aire 
+         * @static 
+         */ 
+        public static function setTheme($namespace = null, $prefix = null, $config = [])
+        {
+                        /** @var \Galahad\Aire\Aire $instance */
+                        return $instance->setTheme($namespace, $prefix, $config);
+        }
+                    /**
+         * Reset Aire to the default theme
+         *
+         * @return \Galahad\Aire\Aire 
+         * @static 
+         */ 
+        public static function resetTheme()
+        {
+                        /** @var \Galahad\Aire\Aire $instance */
+                        return $instance->resetTheme();
+        }
+                    /**
+         * Instantiate a new Form
+         *
+         * @param string $action
+         * @param \Illuminate\Database\Eloquent\Model|object|array $bound_data
+         * @return \Galahad\Aire\Elements\Form 
+         * @static 
+         */ 
+        public static function form($action = null, $bound_data = null)
+        {
+                        /** @var \Galahad\Aire\Aire $instance */
+                        return $instance->form($action, $bound_data);
+        }
+                    /**
+         * Open a new Form.
+         *
+         * @param null $action
+         * @param null $bound_data
+         * @return \Galahad\Aire\Elements\Form 
+         * @static 
+         */ 
+        public static function open($action = null, $bound_data = null)
+        {
+                        /** @var \Galahad\Aire\Aire $instance */
+                        return $instance->open($action, $bound_data);
+        }
+                    /**
+         * Close a new Form.
+         *
+         * @return \Galahad\Aire\Elements\Form 
+         * @static 
+         */ 
+        public static function close()
+        {
+                        /** @var \Galahad\Aire\Aire $instance */
+                        return $instance->close();
+        }
+                    /**
+         * Get a configuration value
+         *
+         * @param string $key
+         * @param mixed $default
+         * @return mixed 
+         * @static 
+         */ 
+        public static function config($key, $default = null)
+        {
+                        /** @var \Galahad\Aire\Aire $instance */
+                        return $instance->config($key, $default);
+        }
+                    /**
+         * Apply the current theme to a view's name
+         *
+         * @param string $view
+         * @return string 
+         * @static 
+         */ 
+        public static function applyTheme($view)
+        {
+                        /** @var \Galahad\Aire\Aire $instance */
+                        return $instance->applyTheme($view);
+        }
+                    /**
+         * Render an Aire view.
+         *
+         * @param $view
+         * @param array $data
+         * @param array $merge_data
+         * @return string 
+         * @static 
+         */ 
+        public static function render($view, $data = [], $merge_data = [])
+        {
+                        /** @var \Galahad\Aire\Aire $instance */
+                        return $instance->render($view, $data, $merge_data);
+        }
+                    /**
+         * Render the first view that exists
+         *
+         * @param array $views
+         * @param array $data
+         * @param array $merge_data
+         * @return string 
+         * @static 
+         */ 
+        public static function renderFirst($views, $data = [], $merge_data = [])
+        {
+                        /** @var \Galahad\Aire\Aire $instance */
+                        return $instance->renderFirst($views, $data, $merge_data);
+        }
+                    /**
+         * Get the next globally unique element ID
+         *
+         * @return int 
+         * @static 
+         */ 
+        public static function generateElementId()
+        {
+                        /** @var \Galahad\Aire\Aire $instance */
+                        return $instance->generateElementId();
+        }
+         
+    }
+     
+}
+
     namespace Illuminate\Http { 
             /**
      * 
@@ -18503,6 +18725,7 @@ namespace  {
             class View extends \Illuminate\Support\Facades\View {}
             class Debugbar extends \Barryvdh\Debugbar\Facade {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
+            class Aire extends \Galahad\Aire\Support\Facades\Aire {}
      
 }
 

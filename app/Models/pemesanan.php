@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class pemesanan extends Model
 {
     use HasFactory;
-
+    protected $guarded = [];
+    public $timestamps = false;
     public function produk()
     {
         return $this->belongsTo(produk::class);

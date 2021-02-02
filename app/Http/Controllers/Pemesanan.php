@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\historistok;
 use Illuminate\Http\Request;
 
 class Pemesanan extends Controller
@@ -34,11 +35,22 @@ class Pemesanan extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except(['_token']);
+        $pemesanan = new \App\Models\pemesanan($data);
+        $pemesanan->save();
+        $produk = \App\Models\produk::where('id',$pemesanan->produk_id)->first();
+        $produk->jumlah_stok = $produk->jumlah_stok-$pemesanan->jumlah;
+        $produk->save();
+        $histori = new historistok();
+        $histori->produk_id = $pemesanan->produk_id;
+        $histori->perubahan = -$pemesanan->jumlah;
+        $histori->jumlah_stok = $produk->jumlah_stok;
+        $histori->save();
+        return redirect()->route('pemesanan.index')->with('pesan','Pemesanan berhasil dilakukan!');
     }
 
     /**
@@ -79,10 +91,20 @@ class Pemesanan extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $pemesanan = \App\Models\pemesanan::where('id',$id)->first();
+        $produk = \App\Models\produk::where('id',$pemesanan->produk_id)->first();
+        $produk->jumlah_stok = $produk->jumlah_stok + $pemesanan->jumlah;
+        $histori= new historistok();
+        $histori->produk_id = $pemesanan->produk_id;
+        $histori->perubahan = $pemesanan->jumlah;
+        $histori->jumlah_stok = $produk->jumlah_stok;
+        $produk->save();
+        $histori->save();
+        \App\Models\pemesanan::destroy($id);
+        return redirect()->route('pemesanan.index')->with('pesan','Data berhasil dihapus!');
     }
 }
