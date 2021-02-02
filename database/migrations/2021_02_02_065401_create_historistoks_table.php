@@ -15,7 +15,7 @@ class CreateHistoristoksTable extends Migration
     {
         Schema::create('historistoks', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('tanggal_waktu')->nullable();
+            $table->dateTime('tanggal_waktu')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->integer('perubahan');
             $table->integer('jumlah_stok');
             $table->unsignedBigInteger('produk_id');
