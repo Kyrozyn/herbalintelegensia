@@ -63,7 +63,7 @@ class LoginController extends Controller
         $user = new User();
         $user->name = $data['name'];
         $user->username = $data['username'];
-        $user->password = $data['password'];
+        $user->password = \Hash::make($data['password']);
         $user->save();
         $user->roles()->attach($data['role']);
         return redirect('/user')->with('pesan','User berhasil ditambahkan!');

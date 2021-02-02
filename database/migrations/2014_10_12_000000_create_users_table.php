@@ -24,7 +24,9 @@ class CreateUsersTable extends Migration
         });
         DB::table('users')->insert(
             [
-                ['id'=>1,'name' => 'adam','username' => 'adam','password' => Hash::make('adam')],
+                ['id'=>1,'name' => 'soa','username' => 'soa','password' => Hash::make('soa')],
+                ['id'=>2,'name' => 'warehouse','username' => 'warehouse','password' => Hash::make('warehouse')],
+                ['id'=>3,'name' => 'gm','username' => 'gm','password' => Hash::make('gm')],
             ]
         );
     }
