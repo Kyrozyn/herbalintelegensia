@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateHistoristoksTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('historistoks', function (Blueprint $table) {
+            $table->id();
+            $table->dateTime('tanggal_waktu')->useCurrent();
+            $table->integer('perubahan');
+            $table->integer('jumlah_stok');
+            $table->unsignedBigInteger('produk_id')->autoIncrement(false);
+            $table->foreign('produk_id')->references('id')->on('produks')->cascadeOnDelete();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('historistoks');
+    }
+}

@@ -34,3 +34,5 @@ Route::post('/user/tambah',[LoginController::class,'usertambahaction'])->name('t
 Route::get('/user/edit/{id}',[LoginController::class,'usereditform'])->name('edituser')->middleware('auth');
 Route::post('/user/edit',[LoginController::class,'usereditaction'])->name('edituseraction')->middleware('auth');
 Route::delete('/user/destroy/{id}',[LoginController::class,'hapusaction'])->name('userhapusaction')->middleware('auth');
+//produk
+Route::resource('produk',\App\Http\Controllers\Produk::class);

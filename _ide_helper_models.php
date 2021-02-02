@@ -64,6 +64,25 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\historistok
+ *
+ * @property int $id
+ * @property string $tanggal_waktu
+ * @property int $perubahan
+ * @property int $jumlah_stok
+ * @method static \Illuminate\Database\Eloquent\Builder|historistok newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|historistok newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|historistok query()
+ * @method static \Illuminate\Database\Eloquent\Builder|historistok whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|historistok whereJumlahStok($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|historistok wherePerubahan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|historistok whereTanggalWaktu($value)
+ */
+	class historistok extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\pelanggan
  *
  * @property int $id
@@ -79,5 +98,24 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|pelanggan whereNoTelp($value)
  */
 	class pelanggan extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\produk
+ *
+ * @property int $id
+ * @property string $nama
+ * @property string $deskripsi
+ * @property int $jumlah_stok
+ * @method static \Illuminate\Database\Eloquent\Builder|produk newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|produk newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|produk query()
+ * @method static \Illuminate\Database\Eloquent\Builder|produk whereDeskripsi($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|produk whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|produk whereJumlahStok($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|produk whereNama($value)
+ */
+	class produk extends \Eloquent {}
 }
 
