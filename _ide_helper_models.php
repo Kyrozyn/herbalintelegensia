@@ -67,7 +67,7 @@ namespace App\Models{
  * App\Models\historistok
  *
  * @property int $id
- * @property string $tanggal_waktu
+ * @property string|null $tanggal_waktu
  * @property int $perubahan
  * @property int $jumlah_stok
  * @property int $produk_id
@@ -82,6 +82,25 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|historistok whereTanggalWaktu($value)
  */
 	class historistok extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\kendaraan
+ *
+ * @property int $id
+ * @property string $plat_no
+ * @property string $nama_kendaraan
+ * @property int $kapasitas
+ * @method static \Illuminate\Database\Eloquent\Builder|kendaraan newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|kendaraan newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|kendaraan query()
+ * @method static \Illuminate\Database\Eloquent\Builder|kendaraan whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|kendaraan whereKapasitas($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|kendaraan whereNamaKendaraan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|kendaraan wherePlatNo($value)
+ */
+	class kendaraan extends \Eloquent {}
 }
 
 namespace App\Models{

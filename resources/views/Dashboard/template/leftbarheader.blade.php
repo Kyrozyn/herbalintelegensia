@@ -40,8 +40,8 @@
                 @if(Request::user()->hasRole('Sales Operational Manager'))
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-car"></i><span class="hide-menu">Data Kendaraan </span></a>
                     <ul aria-expanded="false" class="collapse  first-level">
-                        <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="mdi mdi-car-connected"></i><span class="hide-menu">Tambah Kendaraan</span></a></li>
-                        <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="mdi mdi-car"></i><span class="hide-menu">Lihat Kendaraan</span></a></li>
+                        <li class="sidebar-item"><a href="{{route('kendaraan.create')}}" class="sidebar-link"><i class="mdi mdi-car-connected"></i><span class="hide-menu">Tambah Kendaraan</span></a></li>
+                        <li class="sidebar-item"><a href="{{route('kendaraan.index')}}" class="sidebar-link"><i class="mdi mdi-car"></i><span class="hide-menu">Lihat Kendaraan</span></a></li>
                     </ul>
                 </li>
                 @endif

@@ -37,3 +37,4 @@ Route::delete('/user/destroy/{id}',[LoginController::class,'hapusaction'])->name
 //produk
 Route::resource('produk',\App\Http\Controllers\Produk::class);
 Route::resource('pemesanan',\App\Http\Controllers\Pemesanan::class);
+Route::resource('kendaraan',\App\Http\Controllers\Kendaraan::class);
