@@ -44,7 +44,7 @@ class Produk extends Controller
         $histori->perubahan = $data['jumlah_stok'];
         $histori->produk_id = $produk->id;
         $histori->save();
-        return redirect()->route('produk.index');
+        return redirect()->route('produk.index')->with('pesan','Produk Berhasil Ditambahkan');
     }
 
     /**

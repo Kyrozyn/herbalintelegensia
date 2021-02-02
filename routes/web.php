@@ -36,3 +36,4 @@ Route::post('/user/edit',[LoginController::class,'usereditaction'])->name('editu
 Route::delete('/user/destroy/{id}',[LoginController::class,'hapusaction'])->name('userhapusaction')->middleware('auth');
 //produk
 Route::resource('produk',\App\Http\Controllers\Produk::class);
+Route::resource('pemesanan',\App\Http\Controllers\Pemesanan::class);

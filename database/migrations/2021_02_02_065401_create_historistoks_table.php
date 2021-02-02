@@ -15,10 +15,10 @@ class CreateHistoristoksTable extends Migration
     {
         Schema::create('historistoks', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('tanggal_waktu')->useCurrent();
+            $table->dateTime('tanggal_waktu')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->integer('perubahan');
             $table->integer('jumlah_stok');
-            $table->unsignedBigInteger('produk_id')->autoIncrement(false);
+            $table->unsignedBigInteger('produk_id');
             $table->foreign('produk_id')->references('id')->on('produks')->cascadeOnDelete();
         });
     }

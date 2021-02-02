@@ -70,12 +70,15 @@ namespace App\Models{
  * @property string $tanggal_waktu
  * @property int $perubahan
  * @property int $jumlah_stok
+ * @property int $produk_id
+ * @property-read \App\Models\produk $produk
  * @method static \Illuminate\Database\Eloquent\Builder|historistok newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|historistok newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|historistok query()
  * @method static \Illuminate\Database\Eloquent\Builder|historistok whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|historistok whereJumlahStok($value)
  * @method static \Illuminate\Database\Eloquent\Builder|historistok wherePerubahan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|historistok whereProdukId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|historistok whereTanggalWaktu($value)
  */
 	class historistok extends \Eloquent {}
@@ -89,6 +92,8 @@ namespace App\Models{
  * @property string $nama_pelanggan
  * @property string $alamat
  * @property string $no_telp
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\pemesanan[] $pemesanan
+ * @property-read int|null $pemesanan_count
  * @method static \Illuminate\Database\Eloquent\Builder|pelanggan newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|pelanggan newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|pelanggan query()
@@ -102,12 +107,45 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\pemesanan
+ *
+ * @property int $id
+ * @property int $produk_id
+ * @property int $pelanggan_id
+ * @property string $tanggal_pemesanan
+ * @property string $keterangan
+ * @property int $jumlah
+ * @property string $status
+ * @property int $user_id
+ * @property-read \App\Models\pelanggan $pelanggan
+ * @property-read \App\Models\produk $produk
+ * @method static \Illuminate\Database\Eloquent\Builder|pemesanan newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|pemesanan newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|pemesanan query()
+ * @method static \Illuminate\Database\Eloquent\Builder|pemesanan whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|pemesanan whereJumlah($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|pemesanan whereKeterangan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|pemesanan wherePelangganId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|pemesanan whereProdukId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|pemesanan whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|pemesanan whereTanggalPemesanan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|pemesanan whereUserId($value)
+ */
+	class pemesanan extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\produk
  *
  * @property int $id
  * @property string $nama
  * @property string $deskripsi
  * @property int $jumlah_stok
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\historistok[] $historistok
+ * @property-read int|null $historistok_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\pemesanan[] $pemesanan
+ * @property-read int|null $pemesanan_count
  * @method static \Illuminate\Database\Eloquent\Builder|produk newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|produk newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|produk query()
