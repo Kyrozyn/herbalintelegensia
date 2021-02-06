@@ -17,6 +17,8 @@ class CreatePelanggansTable extends Migration
             $table->id();
             $table->text('nama_pelanggan');
             $table->text('alamat');
+            $table->text('lat');
+            $table->text('long');
             $table->string('no_telp');
         });
     }

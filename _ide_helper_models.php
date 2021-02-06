@@ -110,6 +110,8 @@ namespace App\Models{
  * @property int $id
  * @property string $nama_pelanggan
  * @property string $alamat
+ * @property string $lat
+ * @property string $long
  * @property string $no_telp
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\pemesanan[] $pemesanan
  * @property-read int|null $pemesanan_count
@@ -118,6 +120,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|pelanggan query()
  * @method static \Illuminate\Database\Eloquent\Builder|pelanggan whereAlamat($value)
  * @method static \Illuminate\Database\Eloquent\Builder|pelanggan whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|pelanggan whereLat($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|pelanggan whereLong($value)
  * @method static \Illuminate\Database\Eloquent\Builder|pelanggan whereNamaPelanggan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|pelanggan whereNoTelp($value)
  */
@@ -160,6 +164,7 @@ namespace App\Models{
  * @property int $id
  * @property string $nama
  * @property string $deskripsi
+ * @property int $harga
  * @property int $jumlah_stok
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\historistok[] $historistok
  * @property-read int|null $historistok_count
@@ -169,6 +174,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|produk newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|produk query()
  * @method static \Illuminate\Database\Eloquent\Builder|produk whereDeskripsi($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|produk whereHarga($value)
  * @method static \Illuminate\Database\Eloquent\Builder|produk whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|produk whereJumlahStok($value)
  * @method static \Illuminate\Database\Eloquent\Builder|produk whereNama($value)

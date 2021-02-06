@@ -22,6 +22,7 @@
                     <td>ID Produk</td>
                     <td>Nama Produk</td>
                     <td>Deskripsi Produk</td>
+                    <td>Harga</td>
                     <td>Jumlah Stok</td>
                     <td>Aksi</td>
                 </thead>
@@ -30,6 +31,7 @@
                         <td>{{$produk->id}}</td>
                         <td>{{$produk->nama}}</td>
                         <td>{{$produk->deskripsi}}</td>
+                        <td>{{$produk->harga}}</td>
                         <td>{{$produk->jumlah_stok}}</td>
                         <td class="align-middle text-right">
                             <div class="d-flex justify-content-end">

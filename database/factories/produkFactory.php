@@ -25,6 +25,7 @@ class produkFactory extends Factory
         return [
             'nama' => $this->faker->unique()->firstName,
             'deskripsi' => $this->faker->sentence,
+            'harga' => $this->faker->numberBetween(10000,20000),
             'jumlah_stok' => $this->faker->numberBetween(10,20),
         ];
     }

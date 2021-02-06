@@ -17,6 +17,7 @@ class CreateProduksTable extends Migration
             $table->id();
             $table->text('nama');
             $table->text('deskripsi');
+            $table->integer('harga');
             $table->integer('jumlah_stok');
         });
     }

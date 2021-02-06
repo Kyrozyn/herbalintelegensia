@@ -13,6 +13,11 @@
     </div>
     <div class="row">
         <div class="col col-sm-12 col-lg-6">
+            {{Aire::number('harga','Harga')->id('harga')->required()}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-sm-12 col-lg-6">
             {{Aire::number('jumlah_stok','Stok Awal')->id('jumlah_stok')->required()}}
         </div>
     </div>
