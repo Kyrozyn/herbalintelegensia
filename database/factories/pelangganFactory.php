@@ -24,6 +24,8 @@ class pelangganFactory extends Factory
         return [
             'nama_pelanggan' => $this->faker->unique()->name,
             'alamat' => $this->faker->address,
+            'lat' => $this->faker->latitude,
+            'long' => $this->faker->longitude,
             'no_telp' => $this->faker->unique()->phoneNumber,
         ];
     }

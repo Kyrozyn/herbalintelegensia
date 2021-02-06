@@ -38,3 +38,7 @@ Route::delete('/user/destroy/{id}',[LoginController::class,'hapusaction'])->name
 Route::resource('produk',\App\Http\Controllers\Produk::class);
 Route::resource('pemesanan',\App\Http\Controllers\Pemesanan::class);
 Route::resource('kendaraan',\App\Http\Controllers\Kendaraan::class);
+
+
+//pengiriman
+Route::get('/pengiriman/buat',[\App\Http\Controllers\Pengiriman::class,'buat'])->name('pengiriman.buat')->middleware('auth');

@@ -47,7 +47,7 @@
 
 @section('script')
     <script type="text/javascript"
-            src="http://maps.google.com/maps/api/js?sensor=false&key=AIzaSyABAiRMExl_KVCugrFbUO5FJwNTo_94vt0&libraries=places"></script>
+            src="https://maps.google.com/maps/api/js?sensor=false&key=AIzaSyABAiRMExl_KVCugrFbUO5FJwNTo_94vt0&libraries=places"></script>
     <script>
         var gmarkers = [];
         function init() {
