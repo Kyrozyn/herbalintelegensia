@@ -41,4 +41,4 @@ Route::resource('kendaraan',\App\Http\Controllers\Kendaraan::class);
 
 
 //pengiriman
-Route::get('/pengiriman/buat',[\App\Http\Controllers\Pengiriman::class,'buat'])->name('pengiriman.buat')->middleware('auth');
+Route::get('/pengiriman/buat/{kendaraan}',[\App\Http\Controllers\Pengiriman::class,'buat'])->name('pengiriman.buat')->middleware('auth');

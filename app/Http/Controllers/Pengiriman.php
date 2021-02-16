@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 class Pengiriman extends Controller
 {
     private $lat = -6.923577, $long = 107.677748;
-    public function buat()
+    public function buat($kendaraan)
     {
+        $kendaraan = \App\Models\kendaraan::where('id',$kendaraan)->first();
         $pemesanans = \App\Models\pemesanan::where('status','Belum Dikirim')->get();
         foreach ($pemesanans as $key => $pemesanan){
             $pemesanans[$key]->jarak = $this->hitungjarak($this->lat, $this->long,$pemesanan->pelanggan->lat,$pemesanan->pelanggan->long);
@@ -33,9 +34,33 @@ class Pengiriman extends Controller
                         $penghematan[$baris][$kolom] = $arr[$baris][0] + $arr[$kolom][0] - $arr[$kolom][$baris];
                     }
                 }
-
             }
         }
+        $penghematan_high= -1;
+        $penghematan_baris= -1;
+        $penghematan_kolom= -1;
+        $jalur = [];
+        $rute = [];
+        $box = 0;
+        $iterasi =0;
+        while (empty($penghematan)){
+            $iterasi = $iterasi + 1;
+
+        }
+        for ($baris=0;$baris<$pemesanans->count();$baris++){
+            for ($kolom=0;$kolom<$pemesanans->count();$kolom++) {
+                if($baris > 0 AND $kolom > 0){
+                    if($kolom>$baris){
+                        if($penghematan_high < $penghematan[$baris][$kolom]){
+                            $penghematan_high = $penghematan[$baris][$kolom];
+                            $penghematan_baris = $baris;
+                            $penghematan_kolom = $kolom;
+                        }
+                    }
+                }
+            }
+        }
+        app('debugbar')->info(max($penghematan));
         app('debugbar')->info($arr);
         app('debugbar')->info('penghematan');
         app('debugbar')->info($penghematan);

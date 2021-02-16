@@ -28,7 +28,7 @@
                     <tr>
                         <td>{{$kendaraan->plat_no}}</td>
                         <td>{{$kendaraan->nama_kendaraan}}</td>
-                        <td>{{$kendaraan->kapasitas}} Kg</td>
+                        <td>{{$kendaraan->kapasitas}} Box</td>
                         <td class="align-middle text-right">
                             <div class="d-flex justify-content-end">
                                 <div id="edit" class="ml-2 edit-action">

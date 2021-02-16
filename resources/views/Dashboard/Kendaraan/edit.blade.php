@@ -18,7 +18,7 @@
     </div>
     <div class="row">
         <div class="col col-sm-12 col-lg-6">
-            {{Aire::number('kapasitas','Kapasitas')->id('kapasitas')->required()->append('Kg')}}
+            {{Aire::number('kapasitas','Kapasitas')->id('kapasitas')->required()->append('Box')}}
         </div>
     </div>
     <div class="row">
