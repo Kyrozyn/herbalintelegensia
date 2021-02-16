@@ -11,6 +11,12 @@ class Pengiriman extends Controller
     {
         $kendaraan = \App\Models\kendaraan::where('id',$kendaraan)->first();
         $pemesanans = \App\Models\pemesanan::where('status','Belum Dikirim')->get();
+        if(empty($kendaraan)){
+            return view('Dashboard.Pengiriman.buatpengiriman',['title' => 'Buat Pengiriman', 'pesan' => 'Kendaraan tidak ditemukan!']);
+        }
+        if($pemesanans->count()==0){
+            return view('Dashboard.Pengiriman.buatpengiriman',['title' => 'Buat Pengiriman', 'pesan' => 'Semua Pesanan sudah dikirim!']);
+        }
         foreach ($pemesanans as $key => $pemesanan){
             $pemesanans[$key]->jarak = $this->hitungjarak($this->lat, $this->long,$pemesanan->pelanggan->lat,$pemesanan->pelanggan->long);
         }
@@ -30,40 +36,115 @@ class Pengiriman extends Controller
             for ($kolom=0;$kolom<$pemesanans->count();$kolom++) {
                 if($baris > 0 AND $kolom > 0){
                     if($kolom>$baris){
-                        app('debugbar')->info('debug: '.$baris.".".$kolom);
+//                        app('debugbar')->info('debug: '.$baris.".".$kolom);
                         $penghematan[$baris][$kolom] = $arr[$baris][0] + $arr[$kolom][0] - $arr[$kolom][$baris];
                     }
                 }
             }
         }
-        $penghematan_high= -1;
-        $penghematan_baris= -1;
-        $penghematan_kolom= -1;
         $jalur = [];
         $rute = [];
+        $rute_all = [];
         $box = 0;
         $iterasi =0;
-        while (empty($penghematan)){
-            $iterasi = $iterasi + 1;
+       while (true){
+           $iterasi++;
+           $penghematan_high= -1;
+           $penghematan_baris= -1;
+           $penghematan_kolom= -1;
+           for ($baris=0;$baris<$pemesanans->count();$baris++){
+               for ($kolom=0;$kolom<$pemesanans->count();$kolom++) {
+                   if($baris > 0 AND $kolom > 0){
+                       if($kolom>$baris){
+                           if($penghematan_high < $penghematan[$baris][$kolom]){
+                               $penghematan_high = $penghematan[$baris][$kolom];
+                               $penghematan_baris = $baris;
+                               $penghematan_kolom = $kolom;
+                           }
+                       }
+                   }
+               }
+           }
+           app('debugbar')->info($penghematan_high);
+           app('debugbar')->info($penghematan);
 
-        }
-        for ($baris=0;$baris<$pemesanans->count();$baris++){
-            for ($kolom=0;$kolom<$pemesanans->count();$kolom++) {
-                if($baris > 0 AND $kolom > 0){
-                    if($kolom>$baris){
-                        if($penghematan_high < $penghematan[$baris][$kolom]){
-                            $penghematan_high = $penghematan[$baris][$kolom];
-                            $penghematan_baris = $baris;
-                            $penghematan_kolom = $kolom;
-                        }
-                    }
-                }
-            }
-        }
-        app('debugbar')->info(max($penghematan));
-        app('debugbar')->info($arr);
-        app('debugbar')->info('penghematan');
-        app('debugbar')->info($penghematan);
+           if($penghematan_high == 0){
+               break;
+           }
+           if($penghematan_high>0){
+               if(empty($rute)){
+                   $jumlah = $pemesanans[$penghematan_kolom]->jumlah + $pemesanans[$penghematan_baris]->jumlah;
+                   if($jumlah > $kendaraan->kapasitas){
+                       array_push($rute,$kolom);
+                       for ($baris=0;$baris<$pemesanans->count();$baris++){
+                           for ($kolom=0;$kolom<$pemesanans->count();$kolom++) {
+                               if($baris > 0 AND $kolom > 0){
+                                   if($kolom>$baris){
+                                       $penghematan[$baris][$penghematan_kolom] = 0;
+                                   }
+                               }
+                           }
+                       }
+                       array_push($rute_all,$rute);
+                       $rute=[];
+                   }
+                   else{
+                       array_push($rute,$kolom);
+                       array_push($rute,$baris);
+                       for ($baris=0;$baris<$pemesanans->count();$baris++){
+                           for ($kolom=0;$kolom<$pemesanans->count();$kolom++) {
+                               if($baris > 0 AND $kolom > 0){
+                                   if($kolom>$baris){
+                                       if($kolom == $penghematan_kolom){
+                                           $penghematan[$baris][$kolom] = 0;
+                                       }
+                                   }
+                               }
+                           }
+                       }
+                   }
+               }
+               else{
+                   $total_barang_di_rute = 0;
+                   dd($rute);
+                   foreach ($rute as $r){
+                       $total_barang_di_rute = $total_barang_di_rute + $pemesanans[$a]->jumlah;
+                   }
+                   if(!in_array($penghematan_kolom,$rute)){
+                       $temp = $total_barang_di_rute + $pemesanans[$penghematan_kolom]->jumlah;
+                       if(!$temp>$kendaraan->kapasitas){
+                           array_push($rute,$penghematan_kolom);
+                       }
+                   }
+                   if(!in_array($penghematan_baris,$rute)){
+                       $temp = $total_barang_di_rute + $pemesanans[$penghematan_baris]->jumlah;
+                       if(!$temp>$kendaraan->kapasitas){
+                           array_push($rute,$penghematan_baris);
+                           for ($baris=0;$baris<$pemesanans->count();$baris++){
+                               for ($kolom=0;$kolom<$pemesanans->count();$kolom++) {
+                                   if($baris > 0 AND $kolom > 0){
+                                       if($kolom>$baris){
+                                           $penghematan[$penghematan_baris][$kolom] = $arr[$baris][0] + $arr[$kolom][0] - $arr[$kolom][$baris];
+                                       }
+                                   }
+                               }
+                           }
+                       }
+                   }
+                   array_push($rute,$rute_all);
+               }
+           }
+       }
+
+//        app('debugbar')->info(max($penghematan));
+//        app('debugbar')->info($rute_all);
+
+//        app('debugbar')->info($penghematan);
+//                app('debugbar')->info('high');
+
+//        app('debugbar')->info($penghematan_high);
+//        app('debugbar')->info($penghematan_baris);
+//        app('debugbar')->info($penghematan_kolom);
 
 
         return view('Dashboard.Pengiriman.buatpengiriman',['title' => 'Buat Pengiriman','pemesanans' => $pemesanans,'arr' => $arr]);
