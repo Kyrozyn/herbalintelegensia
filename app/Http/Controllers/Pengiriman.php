@@ -181,5 +181,12 @@ class Pengiriman extends Controller
             }
     }
 
+    public function pilihkendaraan()
+    {
+        $kendaraans = \App\Models\kendaraan::all();
+        $title = 'Pilih Kendaraan';
+        return view('Dashboard.Pengiriman.pilihkendaraan',compact('kendaraans','title'));
+    }
+
 
 }
