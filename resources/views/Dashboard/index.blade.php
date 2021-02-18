@@ -12,138 +12,34 @@
             </div>
         </div>
     @endif
+    <div class="row">
+        <font size="5px" style="padding-bottom: 40px;padding-left: 10px">Selamat Datang di Sistem Informasi Herbal Intelegensia</font>
+    </div>
         <div class="row">
             <div class="col-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Grafik Pemesanan</h5>
-                        <canvas id="pemesanan"></canvas>
+                        <h5 class="card-title">Jumlah Pemesanan</h5>
+                        {{$pemesanans}}
                     </div>
                 </div>
             </div>
             <div class="col-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Grafik Pemesanan Belum Dikirim</h5>
-                        <canvas id="pemesanan_belum_dikirim" ></canvas>
+                        <h5 class="card-title">Jumlah Pemesanan Belum Dikirim</h5>
+                        {{$pemesanans_belum_dikirim}}
                     </div>
                 </div>
             </div>
             <div class="col-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Grafik Pemesanan Dikirim</h5>
-                        <canvas id="pemesanan_dikirim" ></canvas>
+                        <h5 class="card-title">Jumlah Pemesanan Dikirim</h5>
+                        {{$pemesanans_dikirim}}
                     </div>
                 </div>
             </div>
         </div>
 
-@endsection
-
-@section('script')
-{{--    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>--}}
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-    <script>
-        var ctx = document.getElementById('pemesanan').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: [
-                    @foreach($pemesanans as $key => $pemesanan)
-                        @if($key == array_key_last($pemesanans))
-                        "{{$pemesanan->tanggal_pemesanan}}"
-                    @else
-                        "{{$pemesanan->tanggal_pemesanan}}",
-                    @endif
-                    @endforeach
-                ],
-                datasets: [{
-                    label: 'Jumlah Pemesanan',
-                    data: [
-                        @foreach($pemesanans as $key => $pemesanan)
-                        @if($key == array_key_last($pemesanans))
-                        {{$pemesanan->jumlah}}
-                        @else
-                        {{$pemesanan->jumlah.","}}
-                        @endif
-                        @endforeach],
-                    borderWidth: 1
-                }]
-            },
-        });
-        var myLineChart = new Chart(ctx, {
-            type: 'bar',
-            data: data,
-            options: options
-        });
-    </script>
-<script>
-    var ctx = document.getElementById('pemesanan_belum_dikirim').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: [
-                @foreach($pemesanans_belum_dikirim as $key => $pemesanan)
-                    @if($key == array_key_last($pemesanans))
-                    "{{$pemesanan->tanggal_pemesanan}}"
-                @else
-                    "{{$pemesanan->tanggal_pemesanan}}",
-                @endif
-                @endforeach
-            ],
-            datasets: [{
-                label: 'Jumlah Pemesanan',
-                data: [
-                    @foreach($pemesanans_belum_dikirim as $key => $pemesanan)
-                    @if($key == array_key_last($pemesanans))
-                    {{$pemesanan->jumlah}}
-                    @else
-                    {{$pemesanan->jumlah.","}}
-                    @endif
-                    @endforeach],
-                borderWidth: 1
-            }]
-        },
-    });
-    var myLineChart = new Chart(ctx, {
-        type: 'bar',
-        data: data,
-        options: options
-    });
-</script>
-<script>
-    var ctx = document.getElementById('pemesanan_dikirim').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: [
-                @foreach($pemesanans_dikirim as $key => $pemesanan)
-                    @if($key == array_key_last($pemesanans))
-                    "{{$pemesanan->tanggal_pemesanan}}"
-                @else
-                    "{{$pemesanan->tanggal_pemesanan}}",
-                @endif
-                @endforeach
-            ],
-            datasets: [{
-                label: 'Jumlah Pemesanan',
-                data: [
-                    @foreach($pemesanans_dikirim as $key => $pemesanan)
-                    @if($key == array_key_last($pemesanans))
-                    {{$pemesanan->jumlah}}
-                    @else
-                    {{$pemesanan->jumlah.","}}
-                    @endif
-                    @endforeach],
-                borderWidth: 1
-            }]
-        },
-    });
-    var myLineChart = new Chart(ctx, {
-        type: 'bar',
-        data: data,
-        options: options
-    });
-</script>
 @endsection
