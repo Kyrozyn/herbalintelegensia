@@ -56,6 +56,12 @@
             </div>
         </div>
         <hr>
+            <div class="row" style="padding-top: 10px;padding-bottom: 10px">
+                <div class="col-12">
+                    <a href="{{url('/laporan/invoice/'.$invoice->id)}}" class="btn btn-block btn-primary">Cetak Invoice</a>
+                </div>
+            </div>
+        <hr>
         <div class="row">
             <div class="col-12">
                 <table class="table table-bordered bg-white" id="pemesanan">
@@ -88,7 +94,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Rute</h5>
-                        <p class="card-text">{{$invoice->rute}}</p>
+                        <p class="card-text">Gudang-{{$invoice->rute}}-Gudang</p>
                     </div>
                 </div>
             </div>

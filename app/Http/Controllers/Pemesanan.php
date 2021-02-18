@@ -107,4 +107,24 @@ class Pemesanan extends Controller
         \App\Models\pemesanan::destroy($id);
         return redirect()->route('pemesanan.index')->with('pesan','Data berhasil dihapus!');
     }
+
+    public function laporan()
+    {
+        $pemesanans = \App\Models\pemesanan::all();
+//        dd('blash');
+        return view('Dashboard.Laporan.pemesanan',compact('pemesanans'));
+    }
+
+    public function laporanbelumterkirim()
+    {
+        $pemesanans = \App\Models\pemesanan::whereStatus('Belum Dikirim')->get();
+        return view('Dashboard.Laporan.pemesanan',compact('pemesanans'));
+
+    }
+
+    public function laporandikirim()
+    {
+        $pemesanans = \App\Models\pemesanan::whereStatus('Dikirim')->get();
+        return view('Dashboard.Laporan.pemesanan',compact('pemesanans'));
+    }
 }

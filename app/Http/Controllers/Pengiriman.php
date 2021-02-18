@@ -232,5 +232,10 @@ class Pengiriman extends Controller
         return view('Dashboard.Pengiriman.daftarinfoice',['title'=>'Lihat Invoice','invoices'=>$invoice]);
     }
 
+    public function cetakinvoice($id)
+    {
+        $invoice = invoice::whereId($id)->first();
+        return view('Dashboard.Laporan.invoice',['invoice' => $invoice,'lat_toko'=>$this->lat,'long_toko'=>$this->long]);
+    }
 
 }

@@ -13,10 +13,12 @@
                     </ul>
                 </li>
                 @endif
-                @if(Request::user()->hasRole('Sales Operational Manager') OR Request::user()->hasRole('Staff Warehouse'))
+                @if(Request::user()->hasRole('Sales Operational Manager') OR Request::user()->hasRole('Staff Warehouse')OR Request::user()->hasRole('General Manager'))
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-rocket"></i><span class="hide-menu">Pengiriman </span></a>
                     <ul aria-expanded="false" class="collapse  first-level">
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('pengiriman/buat')}}" aria-expanded="false"><i class="mdi mdi-rocket"></i><span class="hide-menu">Buat Invoice & Rute</span></a></li>
+                        @if(Request::user()->hasRole('Sales Operational Manager') OR Request::user()->hasRole('Staff Warehouse'))
+                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('pengiriman/buat')}}" aria-expanded="false"><i class="mdi mdi-rocket"></i><span class="hide-menu">Buat Invoice & Rute</span></a></li>
+                        @endif
                         <li class="sidebar-item"><a href="{{url('/invoice')}}" class="sidebar-link"><i class="mdi mdi-rocket"></i><span class="hide-menu">Lihat Invoice Pengiriman</span></a></li>
                     </ul>
                 </li>
@@ -52,6 +54,16 @@
                         <li class="sidebar-item"><a href="{{url('/user')}}" class="sidebar-link"><i class="mdi mdi-account"></i><span class="hide-menu">Lihat User</span></a></li>
                     </ul>
                 </li>
+                @endif
+                @if(Request::user()->hasRole('General Manager'))
+                    <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-book"></i><span class="hide-menu">Cetak Laporan </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a href="{{url('/pelanggan/laporan')}}" class="sidebar-link"><i class="mdi mdi-account-plus"></i><span class="hide-menu">Laporan Pelanggan</span></a></li>
+                            <li class="sidebar-item"><a href="{{url('/laporan/pemesanan/')}}" class="sidebar-link"><i class="mdi mdi-book"></i><span class="hide-menu">Laporan Pemesanan</span></a></li>
+                            <li class="sidebar-item"><a href="{{url('/laporanbelumdikirim/pemesanan/')}}" class="sidebar-link"><i class="mdi mdi-book"></i><span class="hide-menu">Pemesanan belum dikirim</span></a></li>
+                            <li class="sidebar-item"><a href="{{url('/laporandikirim/pemesanan/')}}" class="sidebar-link"><i class="mdi mdi-book"></i><span class="hide-menu"> Pemesanan sudah dikirim</span></a></li>
+                        </ul>
+                    </li>
                 @endif
             </ul>
         </nav>

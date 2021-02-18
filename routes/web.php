@@ -46,3 +46,11 @@ Route::get('/pengiriman/buat/',[\App\Http\Controllers\Pengiriman::class,'pilihke
 Route::get('/pengiriman/buat/{kendaraan}/{rute}',[\App\Http\Controllers\Pengiriman::class,'buatinvoice'])->name('pengiriman.buatinvoice')->middleware('auth');
 Route::get('/invoice/{id}',[\App\Http\Controllers\Pengiriman::class,'lihatinvoice'])->name('pengiriman.invoice')->middleware('auth');
 Route::get('/invoice/',[\App\Http\Controllers\Pengiriman::class,'lihatsemuainfoice'])->name('pengiriman.lihatsemuainvoice')->middleware('auth');
+
+//laporan
+Route::get('/pelanggan/laporan/',[\App\Http\Controllers\Pelanggan::class,'laporanpelanggan'])->name('pelanggan.laporan')->middleware('auth');
+Route::get('/laporan/pemesanan/',[\App\Http\Controllers\Pemesanan::class,'laporan'])->middleware('auth');
+Route::get('/laporanbelumdikirim/pemesanan/',[\App\Http\Controllers\Pemesanan::class,'laporanbelumterkirim'])->name('pelanggan.laporan')->middleware('auth');
+Route::get('/laporandikirim/pemesanan/',[\App\Http\Controllers\Pemesanan::class,'laporandikirim'])->name('pelanggan.laporan')->middleware('auth');
+Route::get('/laporan/invoice/{id}',[\App\Http\Controllers\Pengiriman::class,'cetakinvoice'])->name('pelanggan.laporan')->middleware('auth');
+

@@ -46,4 +46,10 @@ class Pelanggan extends Controller
         \App\Models\pelanggan::destroy($id);
         return redirect('/pelanggan')->with('pesan','Data berhasil dihapus!');
     }
+
+    public function laporanpelanggan()
+    {
+        $pelanggans = \App\Models\pelanggan::all();
+        return view('Dashboard.Laporan.pelanggan',compact('pelanggans'));
+    }
 }
