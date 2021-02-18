@@ -47,21 +47,21 @@
                     </ul>
                 </li>
                 @endif
-                @if(Request::user()->hasRole('Sales Operational Manager'))
-                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-account-location"></i><span class="hide-menu">Pengolahan Akun </span></a>
-                    <ul aria-expanded="false" class="collapse  first-level">
-                        <li class="sidebar-item"><a href="{{url('/user/tambah')}}" class="sidebar-link"><i class="mdi mdi-account-plus"></i><span class="hide-menu">Tambah User</span></a></li>
-                        <li class="sidebar-item"><a href="{{url('/user')}}" class="sidebar-link"><i class="mdi mdi-account"></i><span class="hide-menu">Lihat User</span></a></li>
-                    </ul>
-                </li>
-                @endif
-                @if(Request::user()->hasRole('General Manager'))
+                @if(Request::user()->hasRole('General Manager') OR Request::user()->hasRole('Sales Operational Manager'))
                     <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-book"></i><span class="hide-menu">Cetak Laporan </span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
                             <li class="sidebar-item"><a href="{{url('/pelanggan/laporan')}}" class="sidebar-link"><i class="mdi mdi-account-plus"></i><span class="hide-menu">Laporan Pelanggan</span></a></li>
                             <li class="sidebar-item"><a href="{{url('/laporan/pemesanan/')}}" class="sidebar-link"><i class="mdi mdi-book"></i><span class="hide-menu">Laporan Pemesanan</span></a></li>
                             <li class="sidebar-item"><a href="{{url('/laporanbelumdikirim/pemesanan/')}}" class="sidebar-link"><i class="mdi mdi-book"></i><span class="hide-menu">Pemesanan belum dikirim</span></a></li>
                             <li class="sidebar-item"><a href="{{url('/laporandikirim/pemesanan/')}}" class="sidebar-link"><i class="mdi mdi-book"></i><span class="hide-menu"> Pemesanan sudah dikirim</span></a></li>
+                        </ul>
+                    </li>
+                @endif
+                @if(Request::user()->hasRole('Sales Operational Manager'))
+                    <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-account-location"></i><span class="hide-menu">Pengolahan Akun </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a href="{{url('/user/tambah')}}" class="sidebar-link"><i class="mdi mdi-account-plus"></i><span class="hide-menu">Tambah User</span></a></li>
+                            <li class="sidebar-item"><a href="{{url('/user')}}" class="sidebar-link"><i class="mdi mdi-account"></i><span class="hide-menu">Lihat User</span></a></li>
                         </ul>
                     </li>
                 @endif
