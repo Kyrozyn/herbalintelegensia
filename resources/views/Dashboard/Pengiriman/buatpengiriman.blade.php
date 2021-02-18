@@ -42,6 +42,7 @@
         <div class="col-12">
             <table class="table table-bordered bg-white" id="pemesanan">
                 <thead>
+                <td>No</td>
                 <td>ID Pemesanan</td>
                 <td>Produk</td>
                 <td>Pelanggan</td>
@@ -52,6 +53,7 @@
                 </thead>
                 @foreach($pemesanans as $no => $pemesanan)
                     <tr>
+                        <td>{{$no+1}}</td>
                         <td>{{$pemesanan->id}}</td>
                         <td>{{$pemesanan->produk->nama}}</td>
                         <td>{{$pemesanan->pelanggan->nama_pelanggan}}</td>
@@ -60,6 +62,24 @@
                         <td>{{$pemesanan->keterangan}}</td>
                         <td>{{$pemesanan->jarak}} Km</td>
                     </tr>
+                @endforeach
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h4>Rekomendasi Rute Pengiriman</h4>
+            <table class="table table-bordered bg-white" id="pemesanan">
+                <thead>
+                <td>Rekomendasi Rute Ke-</td>
+                <td>Rute Yang Akan Di tempuh (sesuai no)</td>
+                </thead>
+                @foreach($rute as $no => $rt)
+                <tr>
+                    <td>{{$no+1}}</td>
+                    <td>Gudang - @foreach($rt as $r) {{$r}} -@endforeach Gudang
+                    </td>
+                </tr>
                 @endforeach
             </table>
         </div>
