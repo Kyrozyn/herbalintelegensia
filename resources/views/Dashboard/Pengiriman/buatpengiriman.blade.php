@@ -178,13 +178,13 @@
         @foreach($rt as $noo => $r)
         var marker{{$noo}} = new google.maps.Marker({
             position: new google.maps.LatLng({{$pemesanans[$r-1]->pelanggan->lat}}, {{$pemesanans[$r-1]->pelanggan->long}}),
-            title: 'Pemesanan No {{$noo+1}}',
+            title: 'Pemesanan No {{$r}}',
             map: map{{$no}},
             draggable: false,
             animation: google.maps.Animation.BOUNCE
         });
         google.maps.event.addListener(marker{{$noo}}, 'click', function () {
-            info_window.setContent('<b>' + 'Pemesanan No {{$noo+1}}' + '</b>');
+            info_window.setContent('<b>' + 'Pemesanan No {{$r}}' + '</b>');
             info_window.open(map{{$no}}, this);
         });
         @endforeach
