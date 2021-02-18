@@ -144,7 +144,7 @@
             center: new google.maps.LatLng({{$lat_toko}}, {{$long_toko}}),
             mapTypeId: 'roadmap'
         };
-        var map = new google.maps.Map(document.getElementById('maps{{$no}}'), mapOptions);
+        var map{{$no}} = new google.maps.Map(document.getElementById('maps{{$no}}'), mapOptions);
         var roadTripCoordinates = [
             {lat:{{$lat_toko}},lng: {{$long_toko}}},
             @foreach($rt as $r)
@@ -158,13 +158,43 @@
             strokeOpacity: 1.0,
             strokeWeight: 2
         });
+        var info_window = new google.maps.InfoWindow();
+        //marker toko
+        var markertoko = new google.maps.Marker({
+            position: new google.maps.LatLng({{$lat_toko}}, {{$long_toko}}),
+            title: 'Posisi Gudang',
+            map: map{{$no}},
+            draggable: false,
+            animation: google.maps.Animation.BOUNCE,
+            icon:{
+                url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+            }
+        });
+        google.maps.event.addListener(markertoko, 'click', function () {
+            info_window.setContent('<b>' + 'Posisi Gudang' + '</b>');
+            info_window.open(map{{$no}}, this);
+        });
+        //marker pesanan
+        @foreach($rt as $noo => $r)
+        var marker{{$noo}} = new google.maps.Marker({
+            position: new google.maps.LatLng({{$pemesanans[$r-1]->pelanggan->lat}}, {{$pemesanans[$r-1]->pelanggan->long}}),
+            title: 'Pemesanan No {{$noo+1}}',
+            map: map{{$no}},
+            draggable: false,
+            animation: google.maps.Animation.BOUNCE
+        });
+        google.maps.event.addListener(marker{{$noo}}, 'click', function () {
+            info_window.setContent('<b>' + 'Pemesanan No {{$noo+1}}' + '</b>');
+            info_window.open(map{{$no}}, this);
+        });
+        @endforeach
         var bounds = new google.maps.LatLngBounds();
         for (var i = 0; i < roadTripCoordinates.length; i++) {
             bounds.extend(roadTripCoordinates[i]);
         }
         bounds.getCenter();
 
-        roadTrip.setMap(map);
+        roadTrip.setMap(map{{$no}});
     }
     google.maps.event.addDomListener(window, 'load', initMap{{$no}}());
     @endforeach</script>

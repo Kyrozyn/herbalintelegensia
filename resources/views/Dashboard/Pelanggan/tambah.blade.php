@@ -122,7 +122,6 @@
                             google.maps.event.addListener(market1, 'click', function () {
                                 info_window.setContent('<b>' + alamat + '</b>');
                                 info_window.open(map, this);
-
                             });
                         } else {
                             alert('Lokasi Tidak Ditemukan');
