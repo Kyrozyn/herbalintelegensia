@@ -145,15 +145,15 @@
             mapTypeId: 'roadmap'
         };
         var map{{$no}} = new google.maps.Map(document.getElementById('maps{{$no}}'), mapOptions);
-        var roadTripCoordinates = [
+        var roadTripCoordinates{{$no}} = [
             {lat:{{$lat_toko}},lng: {{$long_toko}}},
             @foreach($rt as $r)
             {lat:{{$pemesanans[$r-1]->pelanggan->lat}},lng: {{$pemesanans[$r-1]->pelanggan->long}}},
             @endforeach
             {lat:{{$lat_toko}},lng: {{$long_toko}}}
             ]
-        var roadTrip = new google.maps.Polyline({
-            path: roadTripCoordinates,
+        var roadTrip{{$no}} = new google.maps.Polyline({
+            path: roadTripCoordinates{{$no}},
             strokeColor: '#FF0000',
             strokeOpacity: 1.0,
             strokeWeight: 2
@@ -189,12 +189,12 @@
         });
         @endforeach
         var bounds = new google.maps.LatLngBounds();
-        for (var i = 0; i < roadTripCoordinates.length; i++) {
-            bounds.extend(roadTripCoordinates[i]);
+        for (var i = 0; i < roadTripCoordinates{{$no}}.length; i++) {
+            bounds.extend(roadTripCoordinates{{$no}}[i]);
         }
         bounds.getCenter();
 
-        roadTrip.setMap(map{{$no}});
+        roadTrip{{$no}}.setMap(map{{$no}});
     }
     google.maps.event.addDomListener(window, 'load', initMap{{$no}}());
     @endforeach</script>
