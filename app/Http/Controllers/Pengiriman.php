@@ -19,7 +19,7 @@ class Pengiriman extends Controller
         }
         if($pemesanans->count()==1){
             $rute_all = [[1]];
-            return view('Dashboard.Pengiriman.buatpengiriman',['title' => 'Buat Pengiriman', 'rute' => $rute_all,'pemesanans' => $pemesanans]);
+            return view('Dashboard.Pengiriman.buatpengiriman',['title' => 'Buat Pengiriman', 'rute' => $rute_all,'pemesanans' => $pemesanans,'kendaraan' => $kendaraan]);
         }
         foreach ($pemesanans as $key => $pemesanan){
             $pemesanans[$key]->jarak = $this->hitungjarak($this->lat, $this->long,$pemesanan->pelanggan->lat,$pemesanan->pelanggan->long);
@@ -156,7 +156,7 @@ class Pengiriman extends Controller
         }
 //        dd($rute_all);
 
-     return view('Dashboard.Pengiriman.buatpengiriman',['title' => 'Buat Pengiriman','pemesanans' => $pemesanans,'rute'=>$rute_all]);
+     return view('Dashboard.Pengiriman.buatpengiriman',['title' => 'Buat Pengiriman','pemesanans' => $pemesanans,'rute'=>$rute_all,'kendaraan' =>$kendaraan,'lat_toko' => $this->lat,'long_toko'=>$this->long]);
     }
 
     private function hitungjarak($lat1, $lon1, $lat2, $lon2, $unit = 'K'){
