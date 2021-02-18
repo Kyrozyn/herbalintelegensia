@@ -20,7 +20,7 @@ class Pengiriman extends Controller
         }
         if($pemesanans->count()==1){
             $rute_all = [[1]];
-            return view('Dashboard.Pengiriman.buatpengiriman',['title' => 'Buat Pengiriman', 'rute' => $rute_all,'pemesanans' => $pemesanans,'kendaraan' => $kendaraan]);
+            return view('Dashboard.Pengiriman.buatpengiriman',['title' => 'Buat Pengiriman', 'rute' => $rute_all,'pemesanans' => $pemesanans,'kendaraan' => $kendaraan,'lat_toko'=>$this->lat,'long_toko'=>$this->long]);
         }
         foreach ($pemesanans as $key => $pemesanan){
             $pemesanans[$key]->jarak = $this->hitungjarak($this->lat, $this->long,$pemesanan->pelanggan->lat,$pemesanan->pelanggan->long);
