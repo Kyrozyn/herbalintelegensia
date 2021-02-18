@@ -17,7 +17,7 @@
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-rocket"></i><span class="hide-menu">Pengiriman </span></a>
                     <ul aria-expanded="false" class="collapse  first-level">
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('pengiriman/buat')}}" aria-expanded="false"><i class="mdi mdi-rocket"></i><span class="hide-menu">Buat Invoice & Rute</span></a></li>
-                        <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="mdi mdi-rocket"></i><span class="hide-menu">Lihat Invoice Pengiriman</span></a></li>
+                        <li class="sidebar-item"><a href="{{url('/invoice')}}" class="sidebar-link"><i class="mdi mdi-rocket"></i><span class="hide-menu">Lihat Invoice Pengiriman</span></a></li>
                     </ul>
                 </li>
                 @endif

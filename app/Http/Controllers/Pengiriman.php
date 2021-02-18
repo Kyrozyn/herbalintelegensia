@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\invoice;
 use Illuminate\Http\Request;
 
 class Pengiriman extends Controller
@@ -154,8 +155,6 @@ class Pengiriman extends Controller
                 }
             }
         }
-//        dd($rute_all);
-
      return view('Dashboard.Pengiriman.buatpengiriman',['title' => 'Buat Pengiriman','pemesanans' => $pemesanans,'rute'=>$rute_all,'kendaraan' =>$kendaraan,'lat_toko' => $this->lat,'long_toko'=>$this->long]);
     }
 
@@ -186,6 +185,51 @@ class Pengiriman extends Controller
         $kendaraans = \App\Models\kendaraan::all();
         $title = 'Pilih Kendaraan';
         return view('Dashboard.Pengiriman.pilihkendaraan',compact('kendaraans','title'));
+    }
+
+    public function buatinvoice($kendaraan,$rute)
+    {
+        $pemesanans = \App\Models\pemesanan::where('status','Belum Dikirim')->get();
+        $invoice = new invoice();
+        $rutes = explode('-',$rute);
+        $rute_baru = '';
+        $len = count($rutes)-1;
+        foreach ($rutes as $index => $r) {
+            if(!empty($r)){
+                if($index == $len-1){
+                    $rute_baru = $rute_baru.$pemesanans[$r-1]->id;
+                }
+                else{
+                    $rute_baru = $rute_baru.$pemesanans[$r-1]->id.'-';
+                }
+            }
+        }
+        $invoice->rute = $rute_baru;
+        $invoice->kendaraan_id = $kendaraan;
+        $invoice->save();
+        $rutes_baru = explode('-',$rute_baru);
+        foreach ($rutes_baru as $r) {
+            if(!empty($r)){
+                $invoice->pemesanans()->attach($r);
+                $pemesanans = \App\Models\pemesanan::whereId($r)->first();
+                $pemesanans->status = 'Dikirim';
+                $pemesanans->save();
+            }
+        }
+        return redirect()->to('invoice/'.$invoice->id)->with('pesan','Invoice berhasil dibuat!');
+    }
+
+    public function lihatinvoice($id)
+    {
+        $invoice = invoice::whereId($id)->first();
+        $rute = explode('-',$invoice->rute);
+        return view('Dashboard.Pengiriman.invoice',['title'=> "Detail Invoice",'rute' => $rute,'invoice'=>$invoice,'lat_toko'=>$this->lat,'long_toko'=>$this->long]);
+    }
+
+    public function lihatsemuainfoice()
+    {
+        $invoice = invoice::all();
+        return view('Dashboard.Pengiriman.daftarinfoice',['title'=>'Lihat Invoice','invoices'=>$invoice]);
     }
 
 

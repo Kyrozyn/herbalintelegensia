@@ -43,3 +43,6 @@ Route::resource('kendaraan',\App\Http\Controllers\Kendaraan::class);
 //pengiriman
 Route::get('/pengiriman/buat/{kendaraan}',[\App\Http\Controllers\Pengiriman::class,'buat'])->name('pengiriman.buat')->middleware('auth');
 Route::get('/pengiriman/buat/',[\App\Http\Controllers\Pengiriman::class,'pilihkendaraan'])->name('pengiriman.pilihkendaraan')->middleware('auth');
+Route::get('/pengiriman/buat/{kendaraan}/{rute}',[\App\Http\Controllers\Pengiriman::class,'buatinvoice'])->name('pengiriman.buatinvoice')->middleware('auth');
+Route::get('/invoice/{id}',[\App\Http\Controllers\Pengiriman::class,'lihatinvoice'])->name('pengiriman.invoice')->middleware('auth');
+Route::get('/invoice/',[\App\Http\Controllers\Pengiriman::class,'lihatsemuainfoice'])->name('pengiriman.lihatsemuainvoice')->middleware('auth');

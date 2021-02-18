@@ -95,11 +95,14 @@
                 <td>Aksi</td>
                 </thead>
                 @foreach($rute as $no => $rt)
+                    @php($ruto = '')
                 <tr>
                     <td>{{$no+1}}</td>
-                    <td>Gudang - @foreach($rt as $r) {{$r}} -@endforeach Gudang
+                    <td>Gudang - @foreach($rt as $r) {{$r}} -
+                        <?php $ruto = $ruto.$r.'-';?>
+                        @endforeach Gudang
                     </td>
-                    <td><a href="#" class="btn btn-primary">Pilih rute Ini</a> </td>
+                    <td><a href="{{url('pengiriman/buat/'.$kendaraan->id.'/'.$ruto)}}" class="btn btn-primary">Pilih rute Ini</a> </td>
                 </tr>
                 @endforeach
             </table>
@@ -137,6 +140,7 @@
 </script>
 <script type="text/javascript"
         src="https://maps.google.com/maps/api/js?sensor=false&key=AIzaSyABAiRMExl_KVCugrFbUO5FJwNTo_94vt0&libraries=places"></script>
+@if(!isset($pesan))
 <script>@foreach($rute as $no => $rt)
     function initMap{{$no}}() {
         var mapOptions = {
@@ -198,4 +202,5 @@
     }
     google.maps.event.addDomListener(window, 'load', initMap{{$no}}());
     @endforeach</script>
+    @endif
 @endsection

@@ -86,12 +86,34 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\invoice
+ *
+ * @property int $id
+ * @property int $kendaraan_id
+ * @property string $rute
+ * @property-read \App\Models\kendaraan $kendaraan
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\pemesanan[] $pemesanans
+ * @property-read int|null $pemesanans_count
+ * @method static \Illuminate\Database\Eloquent\Builder|invoice newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|invoice newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|invoice query()
+ * @method static \Illuminate\Database\Eloquent\Builder|invoice whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|invoice whereKendaraanId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|invoice whereRute($value)
+ */
+	class invoice extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\kendaraan
  *
  * @property int $id
  * @property string $plat_no
  * @property string $nama_kendaraan
  * @property int $kapasitas
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\invoice[] $invoice
+ * @property-read int|null $invoice_count
  * @method static \Illuminate\Database\Eloquent\Builder|kendaraan newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|kendaraan newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|kendaraan query()
@@ -140,6 +162,8 @@ namespace App\Models{
  * @property int $jumlah
  * @property string $status
  * @property int $user_id
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\invoice[] $invoice
+ * @property-read int|null $invoice_count
  * @property-read \App\Models\pelanggan $pelanggan
  * @property-read \App\Models\produk $produk
  * @method static \Illuminate\Database\Eloquent\Builder|pemesanan newModelQuery()
