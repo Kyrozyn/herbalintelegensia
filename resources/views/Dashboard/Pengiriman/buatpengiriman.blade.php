@@ -65,6 +65,7 @@
                 <td>Produk</td>
                 <td>Pelanggan</td>
                 <td>Tanggal Pemesanan</td>
+                <td>Status Pengiriman</td>
                 <td>Jumlah</td>
                 <td>Keterangan</td>
                 <td>Jarak dari Gudang</td>
@@ -76,6 +77,7 @@
                         <td>{{$pemesanan->produk->nama}}</td>
                         <td>{{$pemesanan->pelanggan->nama_pelanggan}}</td>
                         <td>{{$pemesanan->tanggal_pemesanan}}</td>
+                        <td>{{$pemesanan->kirimplus}}</td>
                         <td>{{$pemesanan->jumlah}}</td>
                         <td>{{$pemesanan->keterangan}}</td>
                         <td>{{ceil($pemesanan->jarak)}} Km</td>

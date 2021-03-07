@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\invoice;
+use Debugbar;
 use Illuminate\Http\Request;
 
 class Pengiriman extends Controller
@@ -24,6 +25,17 @@ class Pengiriman extends Controller
         }
         foreach ($pemesanans as $key => $pemesanan){
             $pemesanans[$key]->jarak = $this->hitungjarak($this->lat, $this->long,$pemesanan->pelanggan->lat,$pemesanan->pelanggan->long);
+            $plus = new \DateTime($pemesanan->tanggal_pemesanan);
+            $plus->modify("+1 day");
+            $now = new \DateTime();
+            Debugbar::debug($plus);
+
+            if($now<=$plus){
+                $pemesanans[$key]->kirimplus = "Pengiriman tepat waktu";
+            }
+            else{
+                $pemesanans[$key]->kirimplus = "Pengiriman tidak tepat waktu (lebih dari +1 hari)";
+            }
         }
         $arr = [];
         $arr[0][0] = 0;
@@ -142,7 +154,6 @@ class Pengiriman extends Controller
 
                 }
             }
-
 
             //Hapus setelah di cari penghematan
             foreach (array_keys($penghematan) as $index_kolom){

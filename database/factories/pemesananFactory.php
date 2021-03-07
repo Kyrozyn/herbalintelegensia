@@ -31,7 +31,7 @@ class pemesananFactory extends Factory
         return [
             'produk_id' => $produk[$produk_rand]['id'],
             'pelanggan_id' => $pelanggan[$pelanggan_rand]['id'],
-            'tanggal_pemesanan' => $this->faker->dateTimeBetween('-3 days','-1 days'),
+            'tanggal_pemesanan' => $this->faker->dateTimeBetween('-3 days','+2 days'),
             'keterangan' => $this->faker->sentence,
             'jumlah' => $this->faker->numberBetween(1,5),
             'status' => 'Belum Dikirim',
