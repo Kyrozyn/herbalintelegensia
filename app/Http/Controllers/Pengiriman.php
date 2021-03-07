@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\invoice;
-use Debugbar;
+//use Debugbar;
 use Illuminate\Http\Request;
 
 class Pengiriman extends Controller
@@ -28,7 +28,7 @@ class Pengiriman extends Controller
             $plus = new \DateTime($pemesanan->tanggal_pemesanan);
             $plus->modify("+1 day");
             $now = new \DateTime();
-            Debugbar::debug($plus);
+//            Debugbar::debug($plus);
 
             if($now<=$plus){
                 $pemesanans[$key]->kirimplus = "Pengiriman tepat waktu";
