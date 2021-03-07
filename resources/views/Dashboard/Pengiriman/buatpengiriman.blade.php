@@ -77,7 +77,11 @@
                         <td>{{$pemesanan->produk->nama}}</td>
                         <td>{{$pemesanan->pelanggan->nama_pelanggan}}</td>
                         <td>{{$pemesanan->tanggal_pemesanan}}</td>
+                        @if($pemesanan->kirimplus == 'Pengiriman tidak tepat waktu (lebih dari +1 hari)')
+                            <td><font color="red">{{$pemesanan->kirimplus}}</font></td>
+                        @else
                         <td>{{$pemesanan->kirimplus}}</td>
+                        @endif
                         <td>{{$pemesanan->jumlah}}</td>
                         <td>{{$pemesanan->keterangan}}</td>
                         <td>{{ceil($pemesanan->jarak)}} Km</td>
